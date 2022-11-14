@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+// use App\Http\Controllers\FrontController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+ Route::get('/', function () {  
     return view('homepage');
+ });
+//  Route::get('/homme',[FrontController::class, 'homme'])->name('homme');
+
+// usage inside a laravel route
+Route::get('/test', function() {
+    $img = Image::canvas(800, 600, '#ddd');
+    $img = Image::make('images/whiteShirt.jpg');
+    $logo = Image::make('images/logos/tired.png')->resize(280,200);
+    $img->insert($logo, 'center');
+    
+    // $img->ellipse(130, 130, 130, 130,  function ($draw) {
+    //     $img = Image::make('images/logos/tired.png');
+    //     $draw->background('#D6E490');
+    //     $draw->border(2,'#070E34');
+    // });
+    return $img->response('jpg');
 });
