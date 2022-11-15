@@ -14,6 +14,27 @@ class NavbarSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $links = [
+            [
+                'name' => 'Home',
+                'route' => 'homepage',
+                'ordering' => 1,
+            ],
+            [
+                'name' => 'Men',
+                'route' => 'Tshirt_Homme',
+                'ordering' => 2,
+            ],
+            [
+                'name' => 'Women',
+                'route' => 'Tshirt_femme',
+                'ordering' => 3,
+            ]
+        ];
+  
+        foreach ($links as $key => $navbar) {
+            Navbar::create($navbar);
+        }
     }
-}
+    }
+
